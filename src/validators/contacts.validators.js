@@ -39,4 +39,4 @@ const handleValidation = (req, res, next) => {
 // Un arreglo de middlewares: primero reglas, luego revisión
 const validateContact = [...contactRules, handleValidation];
 
-module.exports = { validateContact };
+module.exports = { validateContact, handleValidation };

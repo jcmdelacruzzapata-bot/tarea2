@@ -32,7 +32,7 @@ const create = ({ name, email, passwordHash, role = 'member' }) => {
 };
 
 const seedAdmin = async () => {
-   if (findByEmail(process.env.ADMIN_EMAIL)) return;
+  if (findByEmail(process.env.ADMIN_EMAIL)) return;
 
   const passwordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
 
@@ -43,6 +43,5 @@ const seedAdmin = async () => {
     role: 'admin',
   });
 };
-
 
 module.exports = { toPublic, findByEmail, findById, findAll, create, seedAdmin };
