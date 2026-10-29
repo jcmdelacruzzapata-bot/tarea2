@@ -8,6 +8,8 @@ const requestTimer = require('./middlewares/requestTimer');
 const notFound = require('./middlewares/notFound');
 const errorHandler = require('./middlewares/errorHandler');
 const contactsRoutes = require('./routes/contacts.routes');
+const authRoutes = require('./routes/auth.routes');
+const adminRoutes = require('./routes/admin.routes');
 
 const app = express();
 
@@ -23,6 +25,8 @@ const limiter = rateLimit({
   message: { error: 'Demasiadas peticiones, intenta de nuevo en 10 minutos' },
 });
 
+app.use('/auth', authRoutes);
+app.use('/admin', adminRoutes);
 app.use('/contacts', limiter, contactsRoutes);
 
 // SIEMPRE al final, en este orden
